@@ -1,0 +1,113 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>at.sti2.iris</groupId>
+	<artifactId>iris</artifactId>
+	<version>0.8.2-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>IRIS</name>
+	<description>Integrated Rule Inference System is an extensible reasoning engine for expressive rule-based languages.</description>
+
+	<modules>
+		<module>iris-api</module>
+		<module>iris-impl</module>
+		<module>iris-parser</module>
+		<module>iris-rdb</module>
+	</modules>
+
+	<properties>
+		<compiler.version>1.6</compiler.version>
+		<source.encoding>UTF-8</source.encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<scm>
+		<connection>scm:svn:https://iris-reasoner.svn.sourceforge.net/svnroot/iris-reasoner/iris/tags/iris-0.8.0</connection>
+		<developerConnection>scm:svn:https://iris-reasoner.svn.sourceforge.net/svnroot/iris-reasoner/iris/tags/iris-0.8.0</developerConnection>
+		<url>http://iris-reasoner.svn.sourceforge.net/viewvc/iris-reasoner/iris/tags/iris-0.8.0</url>
+	</scm>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.1.2</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<encoding>${source.encoding}</encoding>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<encoding>${source.encoding}</encoding>
+					<source>${compiler.version}</source>
+					<target>${compiler.version}</target>
+					<verbose>false</verbose>
+					<showWarnings>false</showWarnings>
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.7.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+					<skipTests>false</skipTests>
+					<encoding>UTF-8</encoding>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<argLine>-Dfile.encoding=utf8</argLine>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<distributionManagement>
+		<repository>
+			<id>sti2-archiva-external</id>
+			<name>STI Innsbruck External Release Repository</name>
+			<url>http://maven.sti2.at/archiva/repository/external</url>
+			<uniqueVersion>false</uniqueVersion>
+		</repository>
+		<snapshotRepository>
+			<id>sti2-archiva-snapshots</id>
+			<name>STI Innsbruck Snapshot Repository</name>
+			<url>http://maven.sti2.at/archiva/repository/snapshots</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
+
+<!-- 
+	<repositories>
+		<repository>
+			<id>sti2-archiva-external</id>
+			<url>http://maven.sti2.at/archiva/repository/external</url>
+		</repository>
+		<repository>
+			<id>sti2-archiva-snapshots</id>
+			<url>http://maven.sti2.at/archiva/repository/snapshots</url>
+		</repository>
+	</repositories>
+	-->
+	<dependencies>
+		<dependency>
+			<groupId>org.jgrapht</groupId>
+			<artifactId>jgrapht-core</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+	</dependencies>
+</project>
