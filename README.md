@@ -1,7 +1,7 @@
 IRIS Reasoner
 =============
-_Copied from [iris-reasoner.org](http://iris-reasoner.org)._  
-_Code copied from [sourceforge](http://sourceforge.net/project/platformdownload.php?group_id=167309)._
+_Text copied from [iris-reasoner.org](http://iris-reasoner.org)._  
+_Code copied from [sourceforge](https://sourceforge.net/projects/iris-reasoner/)._
 
 IRIS - Integrated Rule Inference System is an extensible reasoning engine for expressive rule-based languages.
 
