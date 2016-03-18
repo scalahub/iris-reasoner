@@ -1,0 +1,8 @@
+*/target/
+/target
+*/branches/
+.DS_Store
+/.classpath
+/.project
+/.settings
+/lib
