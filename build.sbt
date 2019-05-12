@@ -10,7 +10,18 @@ lazy val api = (project in file("iris-api")).settings(
   libraryDependencies += "org.jgrapht" % "jgrapht-core" % "0.9.1"
 )
 
-lazy val parser = (project in file("iris-parser"))
+lazy val parser = (project in file("iris-parser")).settings(
+  //includeFilter in (Compile, unmanagedSources) := "parser.dat",
+  mappings in (Compile, packageBin) += {
+    (baseDirectory.value / "src" / "main" / "java" / "org" / "deri" / "iris" / "parser" / "parser" / "parser.dat") -> 
+    "org/deri/iris/parser/parser/parser.dat"
+  },
+  mappings in (Compile, packageBin) += {
+    (baseDirectory.value / "src" / "main" / "java" / "org" / "deri" / "iris" / "parser" / "lexer" / "lexer.dat") -> 
+    "org/deri/iris/parser/lexer/lexer.dat"
+  }
+
+)
 
 lazy val impl = (project in file("iris-impl")).dependsOn(api, parser).settings(
   // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
@@ -34,4 +45,4 @@ lazy val root = (project in file(".")).aggregate(
   parser,
   rdb
 ).dependsOn(api, impl, parser, rdb)
-  
+
