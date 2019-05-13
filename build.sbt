@@ -44,5 +44,5 @@ lazy val root = (project in file(".")).aggregate(
   impl,
   parser,
   rdb
-).dependsOn(api, impl, parser, rdb)
+).dependsOn(parser, rdb)
 
