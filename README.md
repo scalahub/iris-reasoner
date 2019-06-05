@@ -1,5 +1,7 @@
 IRIS Reasoner
 =============
+[![Build Status](https://travis-ci.org/scalahub/iris-reasoner.svg?branch=master)](https://travis-ci.org/scalahub/iris-reasoner)
+
 _Text copied from [iris-reasoner.org](http://iris-reasoner.org)._  
 _Code copied from [sourceforge](https://sourceforge.net/projects/iris-reasoner/)._
 
