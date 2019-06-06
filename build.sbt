@@ -28,29 +28,24 @@ lazy val parser = (project in file("iris-parser")).settings(
 )
 
 lazy val impl = (project in file("iris-impl")).dependsOn(api, parser).settings(
-  // https://mvnrepository.com/artifact/org.slf4j/slf4j-api
   libraryDependencies += "org.slf4j" % "slf4j-api" % "1.7.26",
   libraryDependencies += "junit"             %  "junit"       % "4.12"        % Test
 )
 lazy val rdb = (project in file("iris-rdb")).settings(
-  // https://mvnrepository.com/artifact/commons-io/commons-io
   libraryDependencies += "commons-io" % "commons-io" % "2.6",
-  // https://mvnrepository.com/artifact/commons-cli/commons-cli
   libraryDependencies += "commons-cli" % "commons-cli" % "1.4",
   libraryDependencies += "junit"             %  "junit"       % "4.12"        % Test
 
 ).dependsOn(api, impl)
 
-// aggregate: running a task on the aggregate project will also run it
-// on the aggregated projects.
+// aggregate: running a task on the aggregate project will also run it on the aggregated projects.
 // dependsOn: a project depends on code in another project.
-// without dependsOn, you'll get a compiler error: "object bar is not a
 lazy val root = (project in file(".")).aggregate(
   api, 
   impl,
   parser,
   rdb
-).dependsOn(parser, rdb).settings(
+).dependsOn(impl, parser, rdb).settings(
   libraryDependencies += "junit"             %  "junit"       % "4.12"        % Test
 )
 
